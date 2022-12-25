@@ -10,6 +10,9 @@ Phishing email analyzers use various techniques to try to identify phishing emai
 
 Overall, the goal of a phishing email analyzer is to help protect users from falling victim to phishing attacks by identifying and flagging potentially malicious emails before the user has a chance to interact with them.
 
+## Problem Statement 
+The number of phishing attacks on enterprises and the public is increasing daily. It's difficult for the general public to analyze suspicious emails due to the complexity of various tools available for analysis and using various strategies.
+
 ## Authors
 
 - [@dheerajydv19](https://www.github.com/dheerajydv19)
