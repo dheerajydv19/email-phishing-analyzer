@@ -3,7 +3,7 @@
 import email
 import re
 
-def analyze_email_headers(eml_file):
+def print_email_headers(eml_file):
   # Parse the email file
   with open(eml_file, "rb") as f:
     msg = email.message_from_binary_file(f)
@@ -16,9 +16,38 @@ def analyze_email_headers(eml_file):
   print("Date:", msg["Date"])
   print("Message-ID:", msg["Message-ID"])
 
+  
+  
+# Analyzing email headers
+def analyze_email_headers(eml_file):
+    # Parse the email file
+    with open(eml_file, "rb") as f:
+        msg = email.message_from_binary_file(f)
+
+    # Extract the domain name of the sender's email address
+    sender = msg["From"]
+    sender_domain = get_domain_from_email(sender)
+    print(sender_domain)
+    # Check the "To" header for multiple recipients
+    recipients = msg["To"]
+    if "," in recipients:
+        print("Warning: Email was sent to multiple recipients")
+
+    # Check for suspicious "Subject" and "Date" values
+    subject = msg["Subject"]
+    date = msg["Date"]
+    if "urgent" in subject.lower():
+        print("Warning: Subject line contains the word 'urgent'")
+    if "suspicious_date" in date:
+        print("Warning: Email was sent from a suspicious date")
+
+    # Check for suspicious "Message-ID" values
+    message_id = msg["Message-ID"]
+    if "fake_id" in message_id:
+        print("Warning: Email has a fake message ID")
 
 # Example usage:
 eml_file = "test.eml"
+print_email_headers(eml_file)
 analyze_email_headers(eml_file)
-
 
