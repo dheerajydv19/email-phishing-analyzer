@@ -19,6 +19,11 @@ def print_email_headers(eml_file):
   
   
 # Analyzing email headers
+def get_domain_from_email(email):
+    # Use a regular expression to extract the domain from the email
+    domain = re.search("@([^@]+)", email).group(1)
+    return domain
+    
 def analyze_email_headers(eml_file):
     # Parse the email file
     with open(eml_file, "rb") as f:
