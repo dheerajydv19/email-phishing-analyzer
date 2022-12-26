@@ -31,8 +31,7 @@ def analyze_email_headers(eml_file):
 
     # Extract the domain name of the sender's email address
     sender = msg["From"]
-    sender_domain = get_domain_from_email(sender)
-    print(sender_domain)
+    sender_domain = get_domain_from_email(sender[:-1])
     # Check the "To" header for multiple recipients
     recipients = msg["To"]
     if "," in recipients:
